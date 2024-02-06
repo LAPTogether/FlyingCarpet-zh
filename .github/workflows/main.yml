@@ -26,8 +26,8 @@ jobs:
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig"
     - name: Install additional dependencies
       run: sudo apt-get install -y libwebkit2gtk-4.0-dev
-    - name: Upgrade tauri-build
-      run: cargo install tauri-bundler --force
+    - name: Add tauri-bundler as a dependency
+      run: cargo add tauri-bundler --version "^1.4.8"
     - name: Build
       run: cargo build --verbose
     - name: Build for Windows
