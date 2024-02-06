@@ -85,17 +85,17 @@ window.addEventListener('DOMContentLoaded', async () => {
       selectedFiles = await tauri.invoke('expand_files', { paths: event.payload });
     } else if (selectedMode === 'receive') {
       if (event.payload.length !== 1) {
-        output('Error: if receiving, must drop only one destination folder.');
+        output('错误：如果是接收，则必须只拖放一个目标文件夹.');
         return;
       }
       let is_dir = await tauri.invoke('is_dir', { path: event.payload[0] });
       if (is_dir) {
         selectedFolder = event.payload[0];
       } else {
-        output('Error: if receiving, must select folder as destination.');
+        output('错误：如果是接收，则必须选择文件夹作为目标.');
       }
     } else {
-      output('Error: must select whether sending or receiving before dropping files or folder.');
+      output('错误：必须在拖放文件或文件夹之前选择发送或接收.');
     }
     checkStatus();
   })
@@ -155,17 +155,17 @@ async function startTransfer() {
   if (needPassword) {
     password = document.getElementById('passwordBox').value;
     if (password.length < 8) {
-      output('Must enter password from the other device.');
+      output('必须输入来自其他设备的密码.');
       return;
     }
   } else {
     password = await tauri.invoke('generate_password');
     if (selectedPeer === 'ios' || selectedPeer === 'android') {
-      output('\nStart the transfer on the other device and scan the QR code when prompted.');
+      output('\n在另一台设备上启动传输，当提示时扫描二维码.');
       makeQRCode(password);
     } else {
-      output(`Password: ${password}`);
-      alert(`\nStart the transfer on the other device and enter this password when prompted:\n${password}`);
+      output(`密码: ${password}`);
+      alert(`\n在另一台设备上启动传输时，请在提示时输入以下密码:\n${password}`);
     }
   }
 
@@ -175,7 +175,7 @@ async function startTransfer() {
     : null;
 
   if (needSsid && ssid == '') {
-    output('Must enter SSID. It will be displayed once you start the transfer on the Android device.');
+    output('必须输入 SSID。在你启动 Android 设备上的传输后，它将显示出来.');
     return;
   }
 
@@ -185,22 +185,22 @@ async function startTransfer() {
   console.log('interfaces:', interfaces);
   switch (interfaces.length) {
     case 0:
-      output('No WiFi interfaces found. Flying Carpet only works over WiFi.');
+      output('未找到 WiFi 接口。Flying Carpet 只能通过 WiFi 进行文件传输.');
       return;
     case 1:
       wifiInterface = interfaces[0];
       break;
     default:
-      let alertString = 'Enter the number for which WiFi interface to use (e.g. "1" or "2"):\n'
+      let alertString = '输入要使用的 WiFi 接口的编号（例如 "1" 或 "2"）:\n'
       for (let i = 0; i < interfaces.length; i++) {
         alertString += `${i+1}: ${interfaces[i][0]}\n`
       }
       let choice = parseInt(prompt(alertString));
       if (choice && choice > 0 && choice <= interfaces.length) {
         wifiInterface = interfaces[choice - 1];
-        output(`Using interface: ${wifiInterface[0]}`);
+        output(`使用接口: ${wifiInterface[0]}`);
       } else {
-        output('Invalid interface selected. Please enter just the number of the WiFi interface you would like to use, e.g. "1" or "3".');
+        output('选择的接口无效。请只输入您想要使用的 WiFi 接口的编号，例如 "1" 或 "3".');
         return;
       }
   }
@@ -260,11 +260,11 @@ let updateSelectionBox = () => {
     for (let i in selectedFiles) {
       s += selectedFiles[i] + '\n';
     }
-    selectionBox.innerText = 'Selected Files:\n' + s;
+    selectionBox.innerText = '已选择的文件:\n' + s;
   } else if (selectedFolder) {
-    selectionBox.innerText = 'Selected Folder:\n' + selectedFolder;
+    selectionBox.innerText = '已选择的文件夹:\n' + selectedFolder;
   } else {
-    selectionBox.innerText = 'Drag and drop files/folders here or use button';
+    selectionBox.innerText = '在此处拖放文件/文件夹或使用按钮';
   }
   fileFolderBox.height = height + 'px';
 }
@@ -324,7 +324,7 @@ let needPasswordAndSsid = async () => {
       showSsid = false;
       break;
     default:
-      alert('Error in shouldShowPasswordAndSsid()');
+      alert('shouldShowPasswordAndSsid() 中出现错误');
   }
   return [showPassword, showSsid];
 }
