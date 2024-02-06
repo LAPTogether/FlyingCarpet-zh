@@ -17,7 +17,7 @@
           <h1 style="margin-bottom: 0px; padding-bottom: 0px;">Flying Carpet</h1>
           <small style="margin-top: 0px; padding-top: 0px;">Version 8</small>
           <small style="margin-top: 0px; padding-top: 0px; color: blue; float: right; cursor: pointer;" id="aboutButton">
-            About
+            关于
           </small>
         </div>
         <div id="qrcode" style="width: 150px; height: 150px;">
@@ -28,18 +28,18 @@
       <!-- radio boxes -->
       <div class="horizontalContainer" style="flex-grow: 0;">
         <fieldset id="modeBox" class="verticalContainer" style="border: solid black; flex-grow: 1; justify-content: space-evenly; padding: 5px;">
-          <legend>Step 1: Select Mode</legend>
+          <legend>步骤1: 选择模式</legend>
           <div class="radio">
             <input type="radio" id="sendButton" name="mode" onchange="modeChange('send')">
-            <label for="sendButton">Send</label>
+            <label for="sendButton">发送</label>
           </div>
           <div class="radio">
             <input type="radio" id="receiveButton" name="mode" onchange="modeChange('receive')">
-            <label for="receiveButton">Receive</label>
+            <label for="receiveButton">接收</label>
           </div>
         </fieldset>
         <fieldset id="peerBox" class="verticalContainer" style="border: solid black; flex-grow: 1; justify-content: space-evenly; padding: 5px;">
-          <legend>Step 2: Select Peer's OS</legend>
+          <legend>步骤2: 选择对方操作系统</legend>
           <div class="radio">
             <input type="radio" id="androidButton" name="peer" onchange="peerChange('android')">
             <label for="androidButton">Android</label>
@@ -66,9 +66,9 @@
       <!-- file/folder selection -->
       <div id="fileFolderBox" style="display: flex; overflow-y: auto; resize: vertical; height: 80px; min-height: 80px; padding: 5px;">
         <fieldset class="horizontalContainer" style="flex-grow: 1; border: solid black;">
-          <legend>Step 3: Select Files to Send or Destination Folder</legend>
-          <button type="button" id="filesButton" onclick="selectFiles()">Select Files</button>
-          <button type="button" id="folderButton" onclick="selectFolder()" style="display: none;">Select Folder</button>
+          <legend>步骤3: 选择文件或目标文件夹</legend>
+          <button type="button" id="filesButton" onclick="selectFiles()">选择文件</button>
+          <button type="button" id="folderButton" onclick="selectFolder()" style="display: none;">选择文件夹</button>
           <div id="selectionBox" style="flex-grow: 1; overflow-y: auto; padding: 5px;"></div>
         </fieldset>
       </div>
@@ -78,12 +78,12 @@
       <input type="text" placeholder="Password (start transfer on other end):" id="passwordBox" style="display: none; padding: 5px;" autocapitalize="off" autocorrect="off" spellcheck="false">
 
       <!-- start/cancel buttons -->
-      <button type="button" id="startButton" onclick="startTransfer()" style="padding: 5px; min-height: 25px;" disabled>Start Transfer</button>
-      <button type="button" id="cancelButton" onclick="cancelTransfer()" style="display: none; padding: 5px; min-height: 25px;">Cancel Transfer</button>
+      <button type="button" id="startButton" onclick="startTransfer()" style="padding: 5px; min-height: 25px;" disabled>开始传输</button>
+      <button type="button" id="cancelButton" onclick="cancelTransfer()" style="display: none; padding: 5px; min-height: 25px;">取消传输</button>
 
       <!-- output box -->
       <div id="outputBox" class="horizontalContainer" style="flex-grow: 9; flex-shrink: 9; overflow-y: auto; padding: 5px; margin-top: 5px;">
-        Welcome to Flying Carpet!
+        欢迎使用 Flying Carpet!
       </div>
 
       <!-- progress bar -->
