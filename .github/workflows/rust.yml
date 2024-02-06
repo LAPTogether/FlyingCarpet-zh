@@ -15,7 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4  # 升级为支持 Node.js 20 的版本
+    - name: Setup Rust
+      uses: actions/setup-rust@v1  # 添加设置 Rust 环境的步骤
+      with:
+        rust-version: 1.56.0  # 设置 Rust 版本
     - name: Build
       run: cargo build --verbose
     - name: Run tests
