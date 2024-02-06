@@ -26,10 +26,6 @@ jobs:
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig"
     - name: Install additional dependencies
       run: sudo apt-get install -y libwebkit2gtk-4.0-dev
-    - name: Add tauri-bundler as a dependency
-      run: cargo add tauri-bundler@1.2.0 --package flying-carpet-core
-    - name: Build
-      run: cargo build --verbose
     - name: Build for Windows
       run: cargo tauri build --target=windows
     - name: Build for Android
