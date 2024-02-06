@@ -23,7 +23,7 @@ jobs:
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         source $HOME/.cargo/env
         # Add PKG_CONFIG_PATH environment variable
-        export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+        export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig"
     - name: Build
       run: cargo build --verbose
     - name: Run tests
