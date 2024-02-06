@@ -26,3 +26,5 @@ jobs:
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig"
     - name: Add tauri-bundler to flying-carpet dependency
       run: cargo add tauri-bundler --package flying-carpet
+    - name: Build application
+      run: cargo build --manifest-path=/path/to/your/Cargo.toml
