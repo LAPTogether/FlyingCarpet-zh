@@ -24,11 +24,5 @@ jobs:
         source $HOME/.cargo/env
         # Add PKG_CONFIG_PATH environment variable
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig"
-    - name: Add tauri-bundler as Cargo dependency
-      run: cargo add tauri-bundler
-    - name: Specify tauri-bundler version in Cargo.toml
-      run: sed -i 's/^tauri-bundler = .*/tauri-bundler = "^1.4.8"/' Cargo.toml
-    - name: Build for Windows
-      run: cargo tauri build --target=windows
-    - name: Build for Android
-      run: cargo tauri build --target=android
+    - name: Add tauri-bundler to flying-carpet dependency
+      run: cargo add tauri-bundler --package flying-carpet
